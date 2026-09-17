@@ -113,18 +113,21 @@ export default function HomeHero() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-3xl blur-2xl" />
               <div className="relative bg-white/10 backdrop-blur border border-white/20 rounded-3xl p-6 max-w-sm">
-                <div className="relative w-full aspect-square max-w-xs mx-auto rounded-2xl overflow-hidden mb-4">
+                <div className="relative w-full aspect-square max-w-xs mx-auto rounded-2xl overflow-hidden mb-4 shadow-inner bg-slate-900/50">
                   <img
                     src="/teacher-photo.jpg"
                     alt="Darshana Nuwan Sir"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent" />
                 </div>
 
                 <div className="text-center text-white">
-                  <h3 className="text-xl font-bold font-poppins">Darshana Nuwan</h3>
-                  <p className="text-blue-200 text-sm mt-1">B.Sc (Physics) | M.Sc | 10+ Years</p>
+                  <h3 className="text-xl font-bold font-poppins">Darshana Nuwan Sir</h3>
+                  <p className="text-blue-200 text-sm mt-1">Science Pothigula | 10+ Years</p>
+                  <span className="inline-block mt-2 bg-yellow-400/20 border border-yellow-400/40 text-yellow-300 text-xs px-3 py-1 rounded-full font-medium">
+                    🏆 Global Laurel Award Winner 2026
+                  </span>
                 </div>
 
                 {/* Floating badges */}

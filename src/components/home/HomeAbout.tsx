@@ -2,6 +2,8 @@ import { CheckCircle, Award, GraduationCap, Lightbulb } from "lucide-react";
 
 export default function HomeAbout() {
   const achievements = [
+    "Best Educational Books Author of the Year (Global Laurel Awards 2026)",
+    "Founder & Author of Science Pothigula",
     "B.Sc in Physics (University of Colombo)",
     "M.Sc in Science Education",
     "10+ years teaching O/L & A/L Science",
@@ -21,18 +23,25 @@ export default function HomeAbout() {
               <img
                 src="/teacher-photo.jpg"
                 alt="Darshana Nuwan Sir"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[500px] object-cover object-top"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/95 backdrop-blur rounded-2xl p-4">
-                  <p className="font-bold text-blue-900 font-poppins">Darshana Nuwan Sir</p>
-                  <p className="text-slate-600 text-sm">O/L & A/L Science Specialist</p>
+                <div className="bg-white/95 backdrop-blur rounded-2xl p-4 shadow-lg border border-blue-100">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-bold text-blue-900 font-poppins text-lg">Darshana Nuwan Sir</p>
+                      <p className="text-slate-600 text-xs">Science Pothigula | O/L & A/L Science</p>
+                    </div>
+                    <span className="bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs font-bold px-2.5 py-1 rounded-lg">
+                      Award Winner 2026
+                    </span>
+                  </div>
                   <div className="flex items-center gap-1 mt-2">
                     {[...Array(5)].map((_, i) => (
                       <span key={i} className="text-yellow-400 text-lg">★</span>
                     ))}
-                    <span className="text-slate-600 text-sm ml-2">4.9/5 (500+ reviews)</span>
+                    <span className="text-slate-600 text-sm ml-2 font-medium">4.9/5 (500+ reviews)</span>
                   </div>
                 </div>
               </div>
