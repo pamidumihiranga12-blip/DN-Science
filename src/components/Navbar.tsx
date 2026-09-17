@@ -61,9 +61,8 @@ export default function Navbar() {
               <FlaskConical className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className={`text-xl font-bold font-poppins transition-colors ${scrolled ? "text-slate-900" : "text-white"}`}>DN</span>
-              <span className={`text-xl font-bold font-poppins transition-colors ${scrolled ? "text-blue-600" : "text-blue-400"}`}> Science</span>
-              <p className={`text-xs leading-none transition-colors ${scrolled ? "text-slate-500" : "text-blue-200"}`}>by Darshana Nuwan Sir</p>
+              <span className={scrolled ? "brand-name-dark text-xl" : "brand-name text-xl"}>දර්ශන නුවන්</span>
+              <p className={`text-xs leading-none transition-colors ${scrolled ? "text-slate-500" : "text-blue-200"}`}>by Science Pothigula</p>
             </div>
           </Link>
 

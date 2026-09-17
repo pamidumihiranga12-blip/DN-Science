@@ -41,7 +41,7 @@ export default function AdminSidebar({ adminName }: { adminName: string }) {
             <FlaskConical className="w-5 h-5 text-white" />
           </div>
           <div>
-            <p className="text-white font-bold font-poppins text-lg">DN Science</p>
+            <p className="text-white font-bold font-poppins text-lg">Darshana Nuwan</p>
             <p className="text-blue-300 text-xs">Admin Panel</p>
           </div>
         </Link>

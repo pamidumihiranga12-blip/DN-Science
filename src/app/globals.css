@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Noto+Sans+Sinhala:wght@400;500;600;700;800;900&display=swap');
 
 @import "tailwindcss";
 
@@ -31,6 +31,34 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* ===== Brand Name — දර්ශන නුවන් ===== */
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.brand-name {
+  font-family: 'Noto Sans Sinhala', 'Iskoola Pota', sans-serif;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 40%, #60a5fa 70%, #e0f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+  display: inline;
+}
+
+/* Dark variant for light backgrounds */
+.brand-name-dark {
+  font-family: 'Noto Sans Sinhala', 'Iskoola Pota', sans-serif;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+  display: inline;
 }
 
 /* Custom scrollbar */

@@ -41,8 +41,8 @@ export default function RegisterPage() {
               <FlaskConical className="w-6 h-6 text-white" />
             </div>
             <div className="text-left">
-              <span className="text-2xl font-bold text-white">DN Science</span>
-              <p className="text-blue-200 text-xs">by Darshana Nuwan Sir</p>
+              <span className="brand-name text-2xl">දර්ශන නුවන්</span>
+              <p className="text-blue-200 text-xs">by Science Pothigula</p>
             </div>
           </Link>
           <h1 className="text-3xl font-bold text-white font-poppins">Create Your Account</h1>

@@ -13,11 +13,10 @@ export default function Footer() {
                 <FlaskConical className="w-6 h-6 text-white" />
               </div>
               <div>
-                <div className="text-2xl font-bold font-poppins">
-                  <span className="text-white">DN</span>
-                  <span className="text-blue-400"> Science</span>
+                <div className="text-2xl">
+                  <span className="brand-name">දර්ශන නුවන්</span>
                 </div>
-                <p className="text-slate-400 text-sm">by Darshana Nuwan Sir</p>
+                <p className="text-slate-400 text-sm">by Science Pothigula</p>
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
@@ -92,7 +91,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} DN Science. All rights reserved.
+            © {new Date().getFullYear()} Darshana Nuwan | Science Pothigula. All rights reserved.
           </p>
           <p className="text-slate-600 text-xs">
             Designed for excellence in Sri Lankan science education

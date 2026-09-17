@@ -99,7 +99,7 @@ export default async function AdminDashboardPage() {
     <div className="p-6 lg:p-8 pt-20 lg:pt-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900 font-poppins">Admin Dashboard</h1>
-        <p className="text-slate-500 mt-1">Overview of DN Science platform activity</p>
+        <p className="text-slate-500 mt-1">Overview of Darshana Nuwan | Science Pothigula platform activity</p>
       </div>
 
       {/* Stats Grid */}
