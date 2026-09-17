@@ -109,11 +109,6 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <div className="mt-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
-            <p className="text-blue-700 text-xs text-center font-medium">
-              Admin: admin@dnscience.lk / admin123
-            </p>
-          </div>
         </div>
 
         <p className="text-center text-blue-300 text-sm mt-6">
