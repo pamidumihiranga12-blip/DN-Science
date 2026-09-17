@@ -13,10 +13,20 @@ export const dynamic = "force-dynamic";
 
 export default async function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const [book] = await db.select().from(books).where(eq(books.id, parseInt(id))).limit(1);
-  if (!book || !book.isPublished) notFound();
+  let book: any = null;
+  let session = null;
 
-  const session = await getSession();
+  try {
+    if (process.env.DATABASE_URL && !isNaN(parseInt(id))) {
+      const [foundBook] = await db.select().from(books).where(eq(books.id, parseInt(id))).limit(1);
+      book = foundBook;
+      session = await getSession();
+    }
+  } catch (error) {
+    console.error("Database error on BookDetailPage:", error);
+  }
+
+  if (!book || !book.isPublished) notFound();
 
   return (
     <main>

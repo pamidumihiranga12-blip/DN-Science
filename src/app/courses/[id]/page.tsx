@@ -15,11 +15,24 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
   const { id } = await params;
   const courseId = parseInt(id);
 
-  const [course] = await db.select().from(courses).where(eq(courses.id, courseId)).limit(1);
-  if (!course || !course.isPublished) notFound();
+  let course: any = null;
+  let courseVideos: any[] = [];
+  let session = null;
 
-  const courseVideos = await db.select().from(videos).where(eq(videos.courseId, courseId)).orderBy(videos.orderIndex);
-  const session = await getSession();
+  try {
+    if (process.env.DATABASE_URL && !isNaN(courseId)) {
+      const [foundCourse] = await db.select().from(courses).where(eq(courses.id, courseId)).limit(1);
+      course = foundCourse;
+      if (course) {
+        courseVideos = await db.select().from(videos).where(eq(videos.courseId, courseId)).orderBy(videos.orderIndex);
+      }
+      session = await getSession();
+    }
+  } catch (error) {
+    console.error("Database error on CourseDetailPage:", error);
+  }
+
+  if (!course || !course.isPublished) notFound();
 
   const freeVideos = courseVideos.filter((v) => v.isFree);
   const paidVideos = courseVideos.filter((v) => !v.isFree);

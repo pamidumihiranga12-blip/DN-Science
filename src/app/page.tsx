@@ -14,11 +14,21 @@ import { eq } from "drizzle-orm";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [coursesData, booksData, testimonialsData] = await Promise.all([
-    db.select().from(courses).where(eq(courses.isPublished, true)).limit(4),
-    db.select().from(books).where(eq(books.isPublished, true)).limit(4),
-    db.select().from(testimonials).where(eq(testimonials.isPublished, true)).limit(5),
-  ]);
+  let coursesData: any[] = [];
+  let booksData: any[] = [];
+  let testimonialsData: any[] = [];
+
+  try {
+    if (process.env.DATABASE_URL) {
+      [coursesData, booksData, testimonialsData] = await Promise.all([
+        db.select().from(courses).where(eq(courses.isPublished, true)).limit(4),
+        db.select().from(books).where(eq(books.isPublished, true)).limit(4),
+        db.select().from(testimonials).where(eq(testimonials.isPublished, true)).limit(5),
+      ]);
+    }
+  } catch (error) {
+    console.error("Database error on HomePage:", error);
+  }
 
   return (
     <main>

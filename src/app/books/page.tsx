@@ -16,7 +16,14 @@ const levelColors: Record<string, string> = {
 export const dynamic = "force-dynamic";
 
 export default async function BooksPage() {
-  const allBooks = await db.select().from(books).where(eq(books.isPublished, true));
+  let allBooks: any[] = [];
+  try {
+    if (process.env.DATABASE_URL) {
+      allBooks = await db.select().from(books).where(eq(books.isPublished, true));
+    }
+  } catch (error) {
+    console.error("Database error on BooksPage:", error);
+  }
 
   return (
     <main>

@@ -8,54 +8,76 @@ import { Users, BookOpen, ShoppingBag, ClipboardList, TrendingUp, AlertCircle, C
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  const [
-    [totalStudents],
-    [totalCourses],
-    [totalBooks],
-    [pendingEnrollments],
-    [pendingOrders],
-    [activeEnrollments],
-    revenueResult,
-  ] = await Promise.all([
-    db.select({ count: count() }).from(users).where(eq(users.role, "student")),
-    db.select({ count: count() }).from(courses).where(eq(courses.isPublished, true)),
-    db.select({ count: count() }).from(books).where(eq(books.isPublished, true)),
-    db.select({ count: count() }).from(enrollments).where(eq(enrollments.status, "pending")),
-    db.select({ count: count() }).from(bookOrders).where(eq(bookOrders.status, "pending")),
-    db.select({ count: count() }).from(enrollments).where(eq(enrollments.status, "active")),
-    db.select({ total: sum(bookOrders.totalPrice) }).from(bookOrders).where(eq(bookOrders.status, "delivered")),
-  ]);
+  let totalStudents = { count: 0 };
+  let totalCourses = { count: 0 };
+  let totalBooks = { count: 0 };
+  let pendingEnrollments = { count: 0 };
+  let pendingOrders = { count: 0 };
+  let activeEnrollments = { count: 0 };
+  let revenue = "0";
+  let recentEnrollments: any[] = [];
+  let recentOrders: any[] = [];
 
-  const revenue = revenueResult[0]?.total || "0";
+  try {
+    if (process.env.DATABASE_URL) {
+      const [
+        [ts],
+        [tc],
+        [tb],
+        [pe],
+        [po],
+        [ae],
+        revenueResult,
+      ] = await Promise.all([
+        db.select({ count: count() }).from(users).where(eq(users.role, "student")),
+        db.select({ count: count() }).from(courses).where(eq(courses.isPublished, true)),
+        db.select({ count: count() }).from(books).where(eq(books.isPublished, true)),
+        db.select({ count: count() }).from(enrollments).where(eq(enrollments.status, "pending")),
+        db.select({ count: count() }).from(bookOrders).where(eq(bookOrders.status, "pending")),
+        db.select({ count: count() }).from(enrollments).where(eq(enrollments.status, "active")),
+        db.select({ total: sum(bookOrders.totalPrice) }).from(bookOrders).where(eq(bookOrders.status, "delivered")),
+      ]);
 
-  const recentEnrollments = await db
-    .select({
-      id: enrollments.id,
-      status: enrollments.status,
-      enrolledAt: enrollments.enrolledAt,
-      userName: users.name,
-      courseTitle: courses.title,
-    })
-    .from(enrollments)
-    .leftJoin(users, eq(enrollments.userId, users.id))
-    .leftJoin(courses, eq(enrollments.courseId, courses.id))
-    .orderBy(enrollments.enrolledAt)
-    .limit(5);
+      if (ts) totalStudents = ts;
+      if (tc) totalCourses = tc;
+      if (tb) totalBooks = tb;
+      if (pe) pendingEnrollments = pe;
+      if (po) pendingOrders = po;
+      if (ae) activeEnrollments = ae;
+      revenue = revenueResult[0]?.total || "0";
 
-  const recentOrders = await db
-    .select({
-      id: bookOrders.id,
-      status: bookOrders.status,
-      totalPrice: bookOrders.totalPrice,
-      orderedAt: bookOrders.orderedAt,
-      userName: users.name,
-      bookTitle: books.title,
-    })
-    .from(bookOrders)
-    .leftJoin(users, eq(bookOrders.userId, users.id))
-    .leftJoin(books, eq(bookOrders.bookId, books.id))
-    .orderBy(bookOrders.orderedAt)
-    .limit(5);
+      recentEnrollments = await db
+        .select({
+          id: enrollments.id,
+          status: enrollments.status,
+          enrolledAt: enrollments.enrolledAt,
+          userName: users.name,
+          courseTitle: courses.title,
+        })
+        .from(enrollments)
+        .leftJoin(users, eq(enrollments.userId, users.id))
+        .leftJoin(courses, eq(enrollments.courseId, courses.id))
+        .orderBy(enrollments.enrolledAt)
+        .limit(5);
+
+      recentOrders = await db
+        .select({
+          id: bookOrders.id,
+          status: bookOrders.status,
+          totalPrice: bookOrders.totalPrice,
+          orderedAt: bookOrders.orderedAt,
+          userName: users.name,
+          bookTitle: books.title,
+        })
+        .from(bookOrders)
+        .leftJoin(users, eq(bookOrders.userId, users.id))
+        .leftJoin(books, eq(bookOrders.bookId, books.id))
+        .orderBy(bookOrders.orderedAt)
+        .limit(5);
+    }
+  } catch (error) {
+    console.error("Database error on AdminDashboardPage:", error);
+  }
 
   const stats = [
     { label: "Total Students", value: totalStudents.count, icon: <Users className="w-7 h-7" />, color: "from-blue-600 to-blue-700", link: "/admin/users" },

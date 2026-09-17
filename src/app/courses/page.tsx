@@ -16,7 +16,14 @@ const levelColors: Record<string, string> = {
 export const dynamic = "force-dynamic";
 
 export default async function CoursesPage() {
-  const allCourses = await db.select().from(courses).where(eq(courses.isPublished, true));
+  let allCourses: any[] = [];
+  try {
+    if (process.env.DATABASE_URL) {
+      allCourses = await db.select().from(courses).where(eq(courses.isPublished, true));
+    }
+  } catch (error) {
+    console.error("Database error on CoursesPage:", error);
+  }
 
   const olCourses = allCourses.filter((c) => c.level === "OL" || c.level === "Both");
   const alCourses = allCourses.filter((c) => c.level === "AL" || c.level === "Both");
