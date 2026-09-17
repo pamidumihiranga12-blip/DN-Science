@@ -9,6 +9,10 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, password, phone, school, grade } = await req.json();
 
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ error: "Database not connected. Please configure DATABASE_URL." }, { status: 500 });
+    }
+
     if (!name || !email || !password) {
       return NextResponse.json({ error: "Name, email and password required" }, { status: 400 });
     }
