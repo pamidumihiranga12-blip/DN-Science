@@ -62,7 +62,7 @@ export default function Navbar() {
             </div>
             <div>
               <span className={scrolled ? "brand-name-dark text-xl" : "brand-name text-xl"}>දර්ශන නුවන්</span>
-              <p className={`text-xs leading-none transition-colors ${scrolled ? "text-slate-500" : "text-blue-200"}`}>by Science Pothigula</p>
+              <p className={`text-xs leading-none transition-colors ${scrolled ? "text-slate-500" : "text-blue-200"}`}>by Science PothGula</p>
             </div>
           </Link>
 

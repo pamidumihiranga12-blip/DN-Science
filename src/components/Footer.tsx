@@ -16,7 +16,7 @@ export default function Footer() {
                 <div className="text-2xl">
                   <span className="brand-name">දර්ශන නුවන්</span>
                 </div>
-                <p className="text-slate-400 text-sm">by Science Pothigula</p>
+                <p className="text-slate-400 text-sm">by Science PothGula</p>
               </div>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">

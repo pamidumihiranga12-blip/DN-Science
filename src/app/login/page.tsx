@@ -42,7 +42,7 @@ export default function LoginPage() {
             </div>
             <div className="text-left">
               <span className="brand-name text-2xl">දර්ශන නුවන්</span>
-              <p className="text-blue-200 text-xs">by Science Pothigula</p>
+              <p className="text-blue-200 text-xs">by Science PothGula</p>
             </div>
           </Link>
           <h1 className="text-3xl font-bold text-white font-poppins">Welcome Back!</h1>
