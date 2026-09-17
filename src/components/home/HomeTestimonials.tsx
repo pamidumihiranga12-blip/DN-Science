@@ -40,7 +40,7 @@ export default function HomeTestimonials({ testimonials }: { testimonials: Testi
             What Our Students Say
           </h2>
           <p className="text-blue-200 max-w-xl mx-auto text-lg">
-            Thousands of students have transformed their science results with DNS Science.
+            Thousands of students have transformed their science results with DN Science.
           </p>
         </div>
 

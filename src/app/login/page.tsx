@@ -41,7 +41,7 @@ export default function LoginPage() {
               <FlaskConical className="w-6 h-6 text-white" />
             </div>
             <div className="text-left">
-              <span className="text-2xl font-bold text-white">DNS Science</span>
+              <span className="text-2xl font-bold text-white">DN Science</span>
               <p className="text-blue-200 text-xs">by Darshana Nuwan Sir</p>
             </div>
           </Link>

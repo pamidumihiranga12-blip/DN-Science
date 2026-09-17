@@ -50,41 +50,50 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg shadow-blue-900/10 border-b border-blue-100"
-          : "bg-transparent"
+          : "bg-slate-950/30 backdrop-blur-md border-b border-white/10"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
               <FlaskConical className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold text-blue-900 font-poppins">DNS</span>
-              <span className="text-xl font-bold text-blue-600"> Science</span>
-              <p className="text-xs text-slate-500 leading-none">by Darshana Nuwan Sir</p>
+              <span className={`text-xl font-bold font-poppins transition-colors ${scrolled ? "text-slate-900" : "text-white"}`}>DN</span>
+              <span className={`text-xl font-bold font-poppins transition-colors ${scrolled ? "text-blue-600" : "text-blue-400"}`}> Science</span>
+              <p className={`text-xs leading-none transition-colors ${scrolled ? "text-slate-500" : "text-blue-200"}`}>by Darshana Nuwan Sir</p>
             </div>
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-all duration-200 hover:text-blue-600 relative group ${
-                  pathname === link.href ? "text-blue-600" : scrolled ? "text-slate-700" : "text-slate-700"
-                }`}
-              >
-                {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-200 ${
-                    pathname === link.href ? "w-full" : "w-0 group-hover:w-full"
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-all duration-200 relative group py-1 ${
+                    isActive
+                      ? scrolled
+                        ? "text-blue-600 font-semibold"
+                        : "text-white font-semibold"
+                      : scrolled
+                      ? "text-slate-700 hover:text-blue-600"
+                      : "text-blue-100/90 hover:text-white"
                   }`}
-                />
-              </Link>
-            ))}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-200 ${
+                      scrolled ? "bg-blue-600" : "bg-blue-400"
+                    } ${isActive ? "w-full" : "w-0 group-hover:w-full"}`}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
           {/* Right side */}
@@ -93,7 +102,11 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-800 px-4 py-2 rounded-xl transition-all duration-200 border border-blue-200"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-200 border ${
+                    scrolled
+                      ? "bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-200"
+                      : "bg-white/10 hover:bg-white/20 text-white border-white/20"
+                  }`}
                 >
                   <div className="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center">
                     <User className="w-4 h-4 text-white" />
@@ -139,13 +152,17 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="text-sm font-medium text-blue-700 hover:text-blue-900 transition-colors"
+                  className={`text-sm font-semibold px-3 py-2 rounded-xl transition-all ${
+                    scrolled
+                      ? "text-slate-700 hover:text-blue-600 hover:bg-blue-50/50"
+                      : "text-white/95 hover:text-white hover:bg-white/10"
+                  }`}
                 >
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:-translate-y-0.5"
                 >
                   Get Started
                 </Link>
@@ -156,7 +173,11 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-blue-50"
+            className={`md:hidden p-2 rounded-xl transition-colors ${
+              scrolled
+                ? "text-slate-700 hover:bg-blue-50"
+                : "text-white hover:bg-white/10"
+            }`}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

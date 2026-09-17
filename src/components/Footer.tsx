@@ -14,7 +14,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-2xl font-bold font-poppins">
-                  <span className="text-white">DNS</span>
+                  <span className="text-white">DN</span>
                   <span className="text-blue-400"> Science</span>
                 </div>
                 <p className="text-slate-400 text-sm">by Darshana Nuwan Sir</p>
@@ -92,7 +92,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} DNS Science. All rights reserved.
+            © {new Date().getFullYear()} DN Science. All rights reserved.
           </p>
           <p className="text-slate-600 text-xs">
             Designed for excellence in Sri Lankan science education

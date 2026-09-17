@@ -41,7 +41,7 @@ export default function AdminSidebar({ adminName }: { adminName: string }) {
             <FlaskConical className="w-5 h-5 text-white" />
           </div>
           <div>
-            <p className="text-white font-bold font-poppins text-lg">DNS Science</p>
+            <p className="text-white font-bold font-poppins text-lg">DN Science</p>
             <p className="text-blue-300 text-xs">Admin Panel</p>
           </div>
         </Link>
@@ -109,7 +109,7 @@ export default function AdminSidebar({ adminName }: { adminName: string }) {
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-blue-900 flex items-center justify-between px-4 h-16 border-b border-blue-800">
         <Link href="/admin" className="flex items-center gap-2">
           <FlaskConical className="w-6 h-6 text-white" />
-          <span className="text-white font-bold">DNS Admin</span>
+          <span className="text-white font-bold">DN Admin</span>
         </Link>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white p-2">
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
